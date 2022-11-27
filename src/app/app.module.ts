@@ -13,6 +13,7 @@ import { FarmaceuticoComponent } from './farmaceutico/farmaceutico.component';
 import localePt from '@angular/common/locales/pt';
 import { registerLocaleData } from '@angular/common';
 import { MedicamentoComponent } from './medicamento/medicamento.component';
+import { ItemVendaComponent } from './item-venda/item-venda.component';
 
 registerLocaleData(localePt, 'pt');
 
@@ -28,6 +29,10 @@ const routes: Route[] = [
   {
     path: 'medicamento',
     component: MedicamentoComponent,
+  },
+  {
+    path: 'item-venda',
+    component: ItemVendaComponent,
   },
   {
     path: '**',
