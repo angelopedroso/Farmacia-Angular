@@ -82,5 +82,39 @@
       "crf": "5551",
       "nasc": "1999-12-20"
     }
+  ],
+  "medicamentos": [
+    {
+      "id": 1,
+      "nome": "Decadurabolim",
+      "preco": 170,
+      "dosagem": 10,
+      "desc": "Pra deixar grandão",
+      "receita": true
+    },
+    {
+      "id": 2,
+      "nome": "Dianabol",
+      "preco": 150,
+      "dosagem": 10,
+      "desc": "Pra deixar grandão",
+      "receita": true
+    },
+    {
+      "id": 3,
+      "nome": "Dipirona",
+      "preco": 23.99,
+      "dosagem": 250,
+      "desc": "Combate dor de cabeça",
+      "receita": false
+    },
+    {
+      "id": 4,
+      "nome": "Stanazolol",
+      "preco": 120.5555,
+      "dosagem": 15,
+      "desc": "Grandão",
+      "receita": true
+    }
   ]
 }

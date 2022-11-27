@@ -46,6 +46,7 @@ export class FarmaceuticoComponent implements OnInit {
     this.editLabel = true;
     this.farmaceuticoForm.reset(this.farmaceuticoForm);
     this.formModal.show();
+    this.farmaceuticos.forEach((f) => console.log(f.nasc));
   }
 
   list() {

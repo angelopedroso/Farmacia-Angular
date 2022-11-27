@@ -10,6 +10,11 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ClienteComponent } from './cliente/cliente.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FarmaceuticoComponent } from './farmaceutico/farmaceutico.component';
+import localePt from '@angular/common/locales/pt';
+import { registerLocaleData } from '@angular/common';
+import { MedicamentoComponent } from './medicamento/medicamento.component';
+
+registerLocaleData(localePt, 'pt');
 
 const routes: Route[] = [
   {
@@ -21,6 +26,10 @@ const routes: Route[] = [
     component: FarmaceuticoComponent,
   },
   {
+    path: 'medicamento',
+    component: MedicamentoComponent,
+  },
+  {
     path: '**',
     redirectTo: '/cliente',
     pathMatch: 'full',
@@ -28,7 +37,12 @@ const routes: Route[] = [
 ];
 
 @NgModule({
-  declarations: [AppComponent, ClienteComponent, FarmaceuticoComponent],
+  declarations: [
+    AppComponent,
+    ClienteComponent,
+    FarmaceuticoComponent,
+    MedicamentoComponent,
+  ],
   imports: [
     BrowserModule,
     NgbModule,
