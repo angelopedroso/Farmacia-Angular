@@ -73,5 +73,14 @@
       "nasc": "2001-01-02"
     }
   ],
-  "farmaceuticos": []
+  "farmaceuticos": [
+    {
+      "id": 1,
+      "nome": "Alberto Alves",
+      "emailAdmin": "albertovalentim@gmail.com",
+      "sexo": "masc",
+      "crf": "5551",
+      "nasc": "1999-12-20"
+    }
+  ]
 }
