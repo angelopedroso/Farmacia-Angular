@@ -5,13 +5,15 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ms-auto align-items-center">
         <li class="nav-item">
+          <a class="nav-link mx-2" [routerLink]="['cliente']">Cliente</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link mx-2" [routerLink]="['farmaceutico']"
+            >Farmacêutico</a
+          >
+        </li>
+        <li class="nav-item">
           <a class="nav-link mx-2">Medicamento</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link mx-2">Farmacêutico</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link mx-2" [routerLink]="['listagem']">Cliente</a>
         </li>
       </ul>
     </div>

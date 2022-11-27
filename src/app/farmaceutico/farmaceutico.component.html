@@ -1,1 +1,179 @@
-<p>farmaceutico works!</p>
+<div class="m-4">
+  <div class="table-title">
+    <div class="d-flex justify-content-between">
+      <div class="text-left">
+        <h2 class="text-dark">Farmacêutico</h2>
+      </div>
+      <div class="text-right">
+        <button
+          type="button"
+          class="btn btn-info text-light"
+          data-toggle="modal"
+          data-target="#addFarmaceutico"
+          (click)="openModal()"
+        >
+          + Adicionar
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <table class="table align-middle mb-0 bg-white">
+    <thead class="bg-light">
+      <tr>
+        <th>#</th>
+        <th>Nome</th>
+        <th>CRF</th>
+        <th>Sexo</th>
+        <th>Nascimento</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let farmaceutico of farmaceuticos">
+        <td>
+          <p class="fw-normal">{{ farmaceutico.id }}</p>
+        </td>
+        <td>
+          <div class="d-flex align-items-center">
+            <div class="ms-3">
+              <p class="fw-bold mb-1">{{ farmaceutico.nome }}</p>
+              <p class="text-muted mb-0">{{ farmaceutico.emailAdmin }}</p>
+            </div>
+          </div>
+        </td>
+        <td>
+          <p class="fw-normal">
+            {{ farmaceutico.crf }}
+          </p>
+        </td>
+        <td>
+          <p class="fw-normal">
+            {{ farmaceutico.sexo === "masc" ? "Masculino" : "Feminino" }}
+          </p>
+        </td>
+        <td>
+          <p class="fw-normal">{{ farmaceutico.nasc }}</p>
+        </td>
+        <td>
+          <ul class="list-inline m-0">
+            <li class="list-inline-item">
+              <button
+                class="btn btn-success btn-sm rounded-0"
+                type="button"
+                data-toggle="tooltip"
+                data-placement="top"
+                title="Edit"
+                (click)="onEditHandler(farmaceutico.id)"
+              >
+                <fa-icon [icon]="faEdit"></fa-icon>
+              </button>
+            </li>
+            <li class="list-inline-item">
+              <button
+                class="btn btn-danger btn-sm rounded-0"
+                type="button"
+                data-toggle="tooltip"
+                data-placement="top"
+                title="Delete"
+                (click)="remove(farmaceutico)"
+              >
+                <fa-icon [icon]="faTrash"></fa-icon>
+              </button>
+            </li>
+          </ul>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div
+  class="modal fade"
+  id="modalFarmaceutico"
+  tabindex="-1"
+  aria-labelledby="LabelFarmaceuticoModal"
+  aria-hidden="true"
+>
+  <div class="modal-dialog d-flex justify-content-center">
+    <div class="modal-content w-75">
+      <div class="modal-header">
+        <h5 class="modal-title" id="LabelFarmaceuticoModal">
+          Formulário da Farmácia 💊
+        </h5>
+        <button
+          type="button"
+          class="btn-close"
+          (click)="this.formModal.hide()"
+        ></button>
+      </div>
+      <div class="modal-body p-4">
+        <form [formGroup]="farmaceuticoForm" (ngSubmit)="onSubmit()">
+          <div class="form-outline mb-4">
+            <label class="form-label" for="name4">Nome</label>
+            <input
+              type="text"
+              id="name4"
+              class="form-control"
+              formControlName="nome"
+            />
+          </div>
+
+          <div class="form-outline mb-4">
+            <label class="form-label" for="crf4">CRF</label>
+            <input
+              type="text"
+              id="crf4"
+              maxlength="4"
+              class="form-control"
+              formControlName="crf"
+            />
+          </div>
+
+          <div class="form-outline mb-4">
+            <label class="form-label" for="email4">Email Admin</label>
+            <input
+              type="email"
+              id="email4"
+              class="form-control"
+              formControlName="emailAdmin"
+            />
+          </div>
+
+          <div class="form-outline mb-4">
+            <label class="form-label" for="dtnasct4">Data de Nascimento</label>
+            <input
+              type="date"
+              id="dtnasct4"
+              class="form-control"
+              formControlName="nasc"
+            />
+          </div>
+
+          <div class="form-outline mb-4">
+            <label class="form-label" for="sexo4">Gênero</label>
+            <select
+              name="sexo"
+              id="sexo4"
+              formControlName="sexo"
+              class="form-select"
+              aria-label="Sexo"
+            >
+              <option value="masc">Masculino</option>
+              <option value="femi">Feminino</option>
+            </select>
+          </div>
+
+          <button
+            type="submit"
+            class="btn btn-block"
+            [ngClass]="this.editLabel ? 'btn-primary' : 'btn-success'"
+            [disabled]="!farmaceuticoForm.valid"
+          >
+            {{ this.editLabel ? "Add" : "Atualizar" }}
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

@@ -13,16 +13,16 @@ import { FarmaceuticoComponent } from './farmaceutico/farmaceutico.component';
 
 const routes: Route[] = [
   {
-    path: 'listagem',
+    path: 'cliente',
     component: ClienteComponent,
   },
   {
-    path: 'edicao/:id',
-    component: ClienteComponent,
+    path: 'farmaceutico',
+    component: FarmaceuticoComponent,
   },
   {
     path: '**',
-    redirectTo: '/listagem',
+    redirectTo: '/cliente',
     pathMatch: 'full',
   },
 ];
