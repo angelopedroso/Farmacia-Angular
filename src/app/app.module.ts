@@ -4,10 +4,31 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxMaskModule } from 'ngx-mask';
 
+import { Route, RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ClienteComponent } from './cliente/cliente.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
+const routes: Route[] = [
+  {
+    path: 'listagem',
+    component: ClienteComponent,
+  },
+  // {
+  //   path: 'cadastro',
+  //   component: LivrosCadastroComponent,
+  // },
+  // {
+  //   path: 'edicao/:id',
+  //   component: LivrosCadastroComponent,
+  // },
+  {
+    path: '**',
+    redirectTo: '/listagem',
+    pathMatch: 'full',
+  },
+];
 
 @NgModule({
   declarations: [AppComponent, ClienteComponent],
@@ -17,7 +38,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    NgxMaskModule.forRoot(),
+    RouterModule.forRoot(routes),
+    NgxMaskModule.forRoot({ dropSpecialCharacters: false }),
     FontAwesomeModule,
   ],
   providers: [{ provide: LOCALE_ID, useValue: 'pt' }],

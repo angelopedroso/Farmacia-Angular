@@ -2,7 +2,7 @@ export interface Cliente {
   id?: number;
   nome: string;
   cpf: string;
+  fone: string;
   email?: string;
-  dataNascto?: Date;
-  endereco?: string;
+  nasc?: Date;
 }

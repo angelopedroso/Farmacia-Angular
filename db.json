@@ -2,11 +2,35 @@
   "clientes": [
     {
       "id": 1,
-      "nome": "Jonas",
-      "cpf": "12345678920",
-      "email": "jonas@test.com",
-      "dataNascto": "2001-04-03",
-      "endereco": "Rua teste, 123"
+      "nome": "Joao",
+      "email": "fasdf@gmail.com",
+      "fone": "45444544444",
+      "cpf": "56464565445",
+      "nasc": "2000-01-01"
+    },
+    {
+      "id": 2,
+      "nome": "Pedro",
+      "email": "faf@gmail.com",
+      "fone": "16565115616",
+      "cpf": "54646554654",
+      "nasc": "2000-01-01"
+    },
+    {
+      "id": 3,
+      "nome": "gsdg",
+      "email": "adfasf@gmail.com",
+      "fone": "46545645645",
+      "cpf": "45656644564",
+      "nasc": "2000-01-01"
+    },
+    {
+      "id": 4,
+      "nome": "gsdg",
+      "email": "gfsdddddfgdsgs@gmail.com",
+      "fone": "45454545454",
+      "cpf": "45556445645",
+      "nasc": "2000-01-01"
     }
   ]
 }
