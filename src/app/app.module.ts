@@ -9,20 +9,17 @@ import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ClienteComponent } from './cliente/cliente.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { FarmaceuticoComponent } from './farmaceutico/farmaceutico.component';
 
 const routes: Route[] = [
   {
     path: 'listagem',
     component: ClienteComponent,
   },
-  // {
-  //   path: 'cadastro',
-  //   component: LivrosCadastroComponent,
-  // },
-  // {
-  //   path: 'edicao/:id',
-  //   component: LivrosCadastroComponent,
-  // },
+  {
+    path: 'edicao/:id',
+    component: ClienteComponent,
+  },
   {
     path: '**',
     redirectTo: '/listagem',
@@ -31,7 +28,7 @@ const routes: Route[] = [
 ];
 
 @NgModule({
-  declarations: [AppComponent, ClienteComponent],
+  declarations: [AppComponent, ClienteComponent, FarmaceuticoComponent],
   imports: [
     BrowserModule,
     NgbModule,

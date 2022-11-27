@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
 import { faTrashAlt } from '@fortawesome/free-regular-svg-icons';
 import { faEdit } from '@fortawesome/free-solid-svg-icons';
 import { Cliente } from './cliente.interface';
@@ -25,6 +24,7 @@ export class ClienteComponent implements OnInit {
     nasc: '2000-01-01',
   });
 
+  editLabel: boolean = false;
   formModal: any;
   faEdit = faEdit;
   faTrash = faTrashAlt;
@@ -32,32 +32,20 @@ export class ClienteComponent implements OnInit {
 
   constructor(
     private clienteService: ClienteService,
-    private formBuilder: FormBuilder,
-    private activatedRoute: ActivatedRoute,
-    private router: Router
+    private formBuilder: FormBuilder
   ) {}
 
   ngOnInit(): void {
     this.list();
-    const id = +this.activatedRoute.snapshot.params['id'];
-    console.log(id);
 
-    if (id) {
-      this.clienteService.getCliente(id).subscribe(
-        (cliente) => {
-          this.clienteForm.patchValue(cliente);
-        },
-        (erro) => {
-          console.log('Erro: ', erro);
-        }
-      );
-    }
     this.formModal = new window.bootstrap.Modal(
       document.getElementById('modalCliente')
     );
   }
 
   openModal() {
+    this.editLabel = true;
+    this.clienteForm.reset();
     this.formModal.show();
   }
 
@@ -87,21 +75,33 @@ export class ClienteComponent implements OnInit {
     );
   }
 
+  onEditHandler(id: any) {
+    this.editLabel = false;
+    this.clienteForm.reset();
+    if (id) {
+      this.clienteService.getCliente(id).subscribe(
+        (cliente) => {
+          console.log(cliente);
+          this.clienteForm.patchValue(cliente);
+          this.formModal.show();
+        },
+        (erro) => {
+          console.log('Erro: ', erro);
+        }
+      );
+    }
+  }
+
   onSubmit() {
     const cliente: Cliente = this.clienteForm.value;
 
     if (cliente.id) {
-      this.clienteService.update(cliente).subscribe(() => this.redirect());
+      this.clienteService.update(cliente).subscribe(() => this.list());
     } else {
-      this.clienteService.save(cliente).subscribe(() => this.redirect());
+      this.clienteService.save(cliente).subscribe(() => this.list());
     }
 
     this.formModal.hide();
-    console.log(this.clientes);
-    this.list();
-  }
-
-  redirect() {
-    this.router.navigate(['/listagem']);
+    // this.clienteForm.reset();
   }
 }
