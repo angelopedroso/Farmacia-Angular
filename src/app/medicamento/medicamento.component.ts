@@ -46,7 +46,7 @@ export class MedicamentoComponent implements OnInit {
     this.editLabel = true;
     this.medicamentoForm.reset();
     this.formModal.show();
-    this.medicamentos.forEach((m) => console.log(m.receita));
+    // this.medicamentos.forEach((m) => console.log(m.receita));
   }
 
   list() {
