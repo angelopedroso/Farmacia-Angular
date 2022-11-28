@@ -81,7 +81,6 @@ export class ClienteComponent implements OnInit {
     if (id) {
       this.clienteService.getCliente(id).subscribe(
         (cliente) => {
-          console.log(cliente);
           this.clienteForm.patchValue(cliente);
           this.formModal.show();
         },
