@@ -7,25 +7,32 @@ import { ItemVenda } from './item-venda.interface';
 @Injectable({
   providedIn: 'root',
 })
-
 export class ItemVendaService {
   constructor(private http: HttpClient) {}
 
-  //nao vejo necessidade de editar ou excluir uma compra depois de registrada. Quando for utilizado o recurso save é pq a compra ta dentro dos conformes
-  getCompra(idCompra:number):Observable<ItemVenda>{
-      return this.http.get<ItemVenda>(
-        `${environment.apiUrl}/item-venda${idCompra}`
-      );
-    }
-  getCompras(idCliente:number):Observable<ItemVenda[]>{
-    return this.http.get<ItemVenda[]>(
-      `${environment.apiUrl}/item-vendas${idCliente}`
+  getItemVenda(id: number): Observable<ItemVenda> {
+    return this.http.get<ItemVenda>(`${environment.apiUrl}/itemvendas/${id}`);
+  }
+
+  getItemVendas(): Observable<ItemVenda[]> {
+    return this.http.get<ItemVenda[]>(`${environment.apiUrl}/itemvendas`);
+  }
+
+  save(itemVenda: ItemVenda): Observable<ItemVenda> {
+    return this.http.post<ItemVenda>(
+      `${environment.apiUrl}/itemvendas`,
+      itemVenda
     );
   }
-  save(itemVenda:ItemVenda):Observable<ItemVenda>{
+
+  update(itemVenda: ItemVenda): Observable<ItemVenda> {
     return this.http.put<ItemVenda>(
-      `${environment.apiUrl}/item-venda`, itemVenda
+      `${environment.apiUrl}/itemvendas/${itemVenda.id}`,
+      itemVenda
     );
+  }
+
+  remove({ id }: ItemVenda): Observable<void> {
+    return this.http.delete<void>(`${environment.apiUrl}/itemvendas/${id}`);
   }
 }
-

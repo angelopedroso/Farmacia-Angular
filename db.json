@@ -116,5 +116,21 @@
       "desc": "Grandão",
       "receita": true
     }
+  ],
+  "itemvendas": [
+    {
+      "id": 1,
+      "medicamentoId": "2",
+      "clienteId": "6",
+      "data": "2022-11-08",
+      "quant": "1"
+    },
+    {
+      "id": 2,
+      "medicamentoId": "1",
+      "clienteId": "2",
+      "data": "2022-10-03",
+      "quant": "1"
+    }
   ]
 }

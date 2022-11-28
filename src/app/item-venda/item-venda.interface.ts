@@ -1,7 +1,7 @@
 export interface ItemVenda {
-  idCompra?:number;
-  idCliente: number;
-  idMedicamento: number;
-  idFarmaceutico: number;
-  Quantidade: number;
+  id?: number;
+  medicamentoId: number;
+  clienteId: number;
+  data: Date;
+  quant: number;
 }
