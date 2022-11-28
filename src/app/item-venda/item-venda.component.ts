@@ -108,7 +108,6 @@ export class ItemVendaComponent implements OnInit {
     if (id) {
       this.itemVendaService.getItemVenda(id).subscribe(
         (itemVenda) => {
-          console.log(itemVenda);
           this.itemVendaForm.patchValue(itemVenda);
           this.formModal.show();
         },
@@ -123,7 +122,6 @@ export class ItemVendaComponent implements OnInit {
     const itemVenda: ItemVenda = this.itemVendaForm.value;
 
     if (itemVenda.id) {
-      console.log(itemVenda);
       this.itemVendaService.update(itemVenda).subscribe(() => this.list());
     } else {
       this.itemVendaService.save(itemVenda).subscribe(() => this.list());
@@ -136,5 +134,10 @@ export class ItemVendaComponent implements OnInit {
   getName(id: any, cliente: boolean = false) {
     if (cliente) return this.clientes.find((x) => x.id === +id)?.nome;
     return this.medicamentos.find((x) => x.id === +id)?.nome;
+  }
+
+  calcTotal(quantity: number = 0, id: any) {
+    const preco = this.medicamentos.find((x) => x.id === +id)?.preco;
+    return quantity * (preco || 0);
   }
 }

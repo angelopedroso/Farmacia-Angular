@@ -71,6 +71,14 @@
       "fone": "44498944989",
       "cpf": "12651156155",
       "nasc": "2001-01-02"
+    },
+    {
+      "id": 12,
+      "nome": "Faladelas",
+      "email": "fyuyfyufyufufu@gmail.com",
+      "fone": "51156156156",
+      "cpf": "23145645445",
+      "nasc": "2001-08-16"
     }
   ],
   "farmaceuticos": [
@@ -81,6 +89,14 @@
       "sexo": "masc",
       "crf": "5551",
       "nasc": "1999-12-20"
+    },
+    {
+      "id": 2,
+      "nome": "Teste",
+      "emailAdmin": "fasdfasf@gmail.com",
+      "sexo": "femi",
+      "crf": "1515",
+      "nasc": "2001-12-05"
     }
   ],
   "medicamentos": [
@@ -115,6 +131,14 @@
       "dosagem": 15,
       "desc": "Grandão",
       "receita": true
+    },
+    {
+      "id": 5,
+      "nome": "Calcitran",
+      "preco": 50,
+      "dosagem": 300,
+      "desc": null,
+      "receita": true
     }
   ],
   "itemvendas": [
@@ -123,7 +147,7 @@
       "medicamentoId": "2",
       "clienteId": "4",
       "data": "2022-11-08",
-      "quant": "1"
+      "quant": "2"
     },
     {
       "id": 2,

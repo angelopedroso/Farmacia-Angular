@@ -26,6 +26,7 @@
         <th>Medicamento</th>
         <th>Data</th>
         <th>Quantidade</th>
+        <th>Valor</th>
         <th>Ações</th>
       </tr>
     </thead>
@@ -54,6 +55,14 @@
         <td>
           <p class="fw-normal">
             {{ itemvenda.quant }}
+          </p>
+        </td>
+        <td>
+          <p class="fw-normal">
+            {{
+              calcTotal(itemvenda.quant, itemvenda.medicamentoId)
+                | currency: "BRL"
+            }}
           </p>
         </td>
         <td>
