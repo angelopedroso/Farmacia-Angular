@@ -47,6 +47,7 @@ const routes: Route[] = [
     ClienteComponent,
     FarmaceuticoComponent,
     MedicamentoComponent,
+    ItemVendaComponent,
   ],
   imports: [
     BrowserModule,

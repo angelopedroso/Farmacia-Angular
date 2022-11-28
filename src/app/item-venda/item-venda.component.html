@@ -3,8 +3,10 @@
     <div class="d-flex justify-content-between">
       <div class="text-left">
         <h2 class="text-dark alig">Nova Compra</h2>
-        <h3 class="text-dark">Cliente:</h3>
-        <h3 class="text-dark">Farmaceutico:</h3>
+        <p *ngIf="enableAdd">
+          <span class="text-dark">Cliente:{{nmCliente}}</span>
+          <span class="text-dark">Farmaceutico:</span>
+        </p>
       </div>
       <div class="text-right">
         <button
@@ -55,7 +57,7 @@
 <div class="modal-dialog d-flex justify-content-center">
   <div class="modal-content w-75">
     <div class="modal-header">
-      <h5 class="modal-title" id="LabelClienteModal">
+      <h5 class="modal-title" id="LabelItemVendaModal">
         Iniciar Nova Compra 💊
       </h5>
       <button
@@ -65,26 +67,33 @@
       ></button>
     </div>
     <div class="modal-body p-4">
-      <form [formGroup]="itemVendaFormPri" (ngSubmit)="onSubmit()">
+      <form [formGroup]="itemVendaFormPri" (ngSubmit)="createList()">
         <div class="form-outline mb-4">
           <label class="form-label" for="slcCliente">Cliente</label>
-          <select name="cliente" id="slcCliente" *ngFor="let cliente of clientes">
-            <option value="{{cliente.id}}">{{cliente.nome}}</option>
-          </select>
+          <select class="form-select" formControlName="cliente" name="cliente" id="slcCliente">
 
+              <option *ngFor="let cliente of clientes"
+                value= "{{cliente.id}}">
+                {{cliente.nome}}
+              </option>
+
+          </select>
+          <br>
           <label class="form-label" for="slcFarm">Farmaceutico</label>
-          <select name="farmaceutico" id="slcFarm" *ngFor="let farmaceutico of farmaceuticos">
-            <option value="{{farmaceutico.id}}">{{farmaceutico.nome}}</option>
+          <select class="form-select" formControlName="farmaceutico" name="farmaceutico" id="slcFarm">
+            <option *ngFor="let farmaceutico of farmaceuticos"
+              [value]="farmaceutico.id">
+              {{farmaceutico.nome}}
+            </option>
           </select>
         </div>
 
         <button
           type="submit"
-          class="btn btn-block"
-          [ngClass]="this.editLabelPri ? 'btn-primary' : 'btn-success'"
+          class="btn btn-block btn-primary"
           [disabled]="!itemVendaFormPri.valid"
         >
-          {{ this.editLabelPri ? "Add" : "Atualizar" }}
+          Add
         </button>
       </form>
     </div>
@@ -112,7 +121,7 @@
       ></button>
     </div>
     <div class="modal-body p-4">
-      <form [formGroup]="itemVendaFormSec" (ngSubmit)="onSubmit()">
+      <form [formGroup]="itemVendaFormSec">
         <div class="form-outline mb-4">
           <label class="form-label" for="slcMedicamento">Medicamento</label>
           <select name="cliente" id="slcMedicamento" *ngFor="let remedio of medicamentos">
@@ -125,11 +134,10 @@
 
         <button
           type="submit"
-          class="btn btn-block"
-          [ngClass]="this.editLabelSec ? 'btn-primary' : 'btn-success'"
+          class="btn btn-block btn-primary"
           [disabled]="!itemVendaFormSec.valid"
         >
-          {{ this.editLabelSec ? "Add" : "Atualizar" }}
+          Add
         </button>
       </form>
     </div>
